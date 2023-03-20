@@ -11,3 +11,11 @@ def find_contact(surname): # поиск контакта
             if surname in line: 
                 contacts.append(line.strip()) # если контакт найден записывем в список
     return contacts # возвращаем список контактов
+
+
+def show_contacts(): # показываем список контактов
+    contacts = []
+    with open ('phonenum.txt', 'r', encoding = "utf-8") as file: # открываем файл для чтения
+        for line in file: 
+            contacts.append(line.strip()) # записываем контакты построчно
+    return(contacts)
