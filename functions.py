@@ -19,3 +19,21 @@ def show_contacts(): # показываем список контактов
         for line in file: 
             contacts.append(line.strip()) # записываем контакты построчно
     return(contacts)
+
+
+def delete_contact(surname, name):
+    with open('phonenum.txt', 'r+', encoding='utf-8') as file:
+        s = file.readlines()
+        found = False
+        for i in reversed(range( len(s))):
+            if s['name'] == name and s['surname'] == surname in s[i]:
+                s.pop(i)
+                s.pop(i-1)
+                s.pop(i-2)
+                found = True
+                break
+            if found == False:
+                return f'{name} {surname} not found'
+    with open('phonenum.txt', 'w', encoding='utf-8') as file_1:
+        file_1.writelines(i for i in s)
+    return (surname)
