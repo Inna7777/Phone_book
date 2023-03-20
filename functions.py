@@ -21,19 +21,16 @@ def show_contacts(): # показываем список контактов
     return(contacts)
 
 
-def delete_contact(surname, name):
-    with open('phonenum.txt', 'r+', encoding='utf-8') as file:
-        s = file.readlines()
-        found = False
+def delete_contact(surname, name): #  удаление контакта
+    with open('phonenum.txt', 'r+', encoding='utf-8') as file: # открываем файл
+        s = file.readlines() #читает все строки из файла и возвращает их в виде списка строк
+        found = False # проверка на выполнения действия удаления
         for i in reversed(range( len(s))):
-            if s['name'] == name and s['surname'] == surname in s[i]:
-                s.pop(i)
-                s.pop(i-1)
-                s.pop(i-2)
+            if surname  in s[i] and name in s[i]: # если фамилия и имя совпали
+                s.pop(i) # удаляем контакт
                 found = True
-                break
-            if found == False:
-                return f'{name} {surname} not found'
-    with open('phonenum.txt', 'w', encoding='utf-8') as file_1:
-        file_1.writelines(i for i in s)
-    return (surname)
+        if found == False: # ecли контакт не найден
+            return (found) # возвращаем "лож"
+    with open('phonenum.txt', 'w', encoding='utf-8') as file_1: # открываем файл для записи
+        file_1.writelines(i for i in s) # переписываем неудаленные контакты
+    return (found) # возврвщвем "Правда"
