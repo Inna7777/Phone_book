@@ -2,7 +2,6 @@ from functions import  add_contact, find_contact, show_contacts, delete_contact
 import my_menu
 
 
-
 def run():
     my_menu.greetings()
     while True:
